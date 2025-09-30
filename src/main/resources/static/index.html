@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama Chat Interface</title>
+    <link rel="icon" type="image/png" href="https://ollama.com/public/assets/c889cc0d-cb83-4c46-a98e-0d0e273151b9/42f6b28d-9117-48cd-ac0d-44baaf5c178e.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ollama Chat</h1>
+        </header>
+        
+        <main>
+            <div id="chat-container">
+                <!-- Status Bar -->
+                <div id="status-bar">
+                    <span id="model-status">Model: <span id="current-model">llama3:8b</span></span>
+                    <span id="connection-status" class="status-indicator connected">Connected</span>
+                </div>
+                
+                <div id="messages">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+                
+                <div class="input-container">
+                    <div class="model-selector-container">
+                        <select id="model-selector" class="model-selector">
+                            <!-- Only showing installed models -->
+                            <option value="tinyllama:latest" selected>TinyLlama (637MB) - Fastest</option>
+                            <option value="deepseek-coder:1.3b">DeepSeek Coder 1.3B (776MB)</option>
+                            <option value="gemma:2b">Gemma 2B (1.7GB)</option>
+                            <option value="phi3:mini">Phi 3 Mini (2.2GB)</option>
+                            <option value="phi3:latest">Phi 3 Latest (2.2GB)</option>
+                            <option value="codellama:7b">CodeLlama 7B (3.8GB)</option>
+                            <option value="mistral:7b">Mistral 7B (4.4GB)</option>
+                            <option value="llama3:8b">Llama 3 8B (4.7GB)</option>
+                        </select>
+                        <div class="tooltip">
+                            <span>ℹ️</span>
+                            <span class="tooltiptext">
+                                <strong>Available Models:</strong><br>
+                                - Llama 3: Best all-around (8B, 70B)<br>
+                                - Mistral: Great balance of speed/quality (7B)<br>
+                                - Mixtral: Expert model (8x7B)<br>
+                                - CodeLlama: Best for programming<br>
+                                - DeepSeek Coder: Specialized for coding<br>
+                                - Phi 3: Lightweight & fast<br>
+                                - Gemma: Google's lightweight models<br>
+                                <br>
+                                <strong>Note:</strong> Only models you've downloaded will work.<br>
+                                Run <code>ollama list</code> to see your local models.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <textarea 
+                            id="prompt-input" 
+                            placeholder="Type your prompt here..." 
+                            rows="3"
+                        ></textarea>
+                        <button id="send-button">Send</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="status"></div>
+        </main>
+        
+        <footer>
+            <p>Powered by Ollama • <span id="model-info">Model: llama3:8b</span></p>
+        </footer>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
